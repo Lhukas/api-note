@@ -1,0 +1,62 @@
+html{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color : white;
+}
+ul {
+    list-style: none;
+    width: 100%;
+    padding: 0px;
+}
+
+li{
+    border: 3px solid rgb(76, 76, 76);
+    border-radius: 8px;
+    width: 100%;
+    margin: 25px auto 25px auto;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    line-height: 50px;
+    padding: 0px 20px;
+}
+a{
+    text-decoration: none;
+    text-align: left;
+    color: black;
+
+    
+}
+a:visited {
+    color: black;
+    
+  }
+
+  .container{
+    width: 50%;
+    margin: auto;
+  }
+  .container p{
+    color: black;
+    text-align: left;
+  }
+  .containerBtn{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    text-align: center;
+    gap: 10%;
+    
+  }
+  .containerBtn a{
+
+text-align: center;
+
+  }
+  .btnDelete{
+
+    color: red !important;
+  
+    
+  }
