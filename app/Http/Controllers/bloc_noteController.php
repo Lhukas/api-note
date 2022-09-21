@@ -52,6 +52,7 @@ class bloc_noteController extends Controller
 
     $test->save();
     return redirect('/')->with('success', 'Nouvelle liste crée avec succès');
+    
     }
 
     /**

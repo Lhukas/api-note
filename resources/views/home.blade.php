@@ -25,19 +25,20 @@
     </div>
     @endif
 <a href="create">Ajouter une liste</a>
-    <ul>
+<table>
+  <tr>
+    <th>Nom du bloc note</th>
+    <th></th>
+    <th></th>
+  </tr>
    @foreach($listBlocNote as $blocNote)
-   <li> 
-        <a href="{{$blocNote['id']}}" class="href">{{$blocNote['name_bloc_note']}}</a>
-        <div class="containerBtn">
-        <a href="" class="btnDelete">Supprimer</a>
-        <a href="" class="btnEdit">Editer</a>
-
-        <div>
-    
-    
-    </li>
+   <tr>
+    <td> <a href="show/{{$blocNote['id']}}" class="href">{{$blocNote['name_bloc_note']}}</a></td>
+    <td>   <a href="" class="btnDelete">Supprimer</a></td>
+    <td>  <a href="" class="btnEdit">Editer</a></td>
+  </tr>
     @endforeach
+    </table>
 </ul>
 </div>
 </body>
