@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class note extends Model
 {
-    use HasFactory;
+    protected $fillable = ['id_bloc_note','texte_note'];
 }

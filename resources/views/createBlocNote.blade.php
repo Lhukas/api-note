@@ -11,10 +11,11 @@
 
 
  <h1>Création d'un bloc note</h1>
-    <form action="save" method="POST">
+    <form action="save" method="POST" id="form_bloc_note">
     @csrf
     <input type="text" name="nameBlocNote" id="">
-    <input type="submit" value="Ajouter">
+    <input type="button" value="Ajouter une note" onclick="ajouterNote()">
+    <input type="submit" value="Valider">
 
 
     </form>
@@ -25,3 +26,21 @@
    
 </body>
 </html>
+
+
+<script>
+    var conteurNote = 1
+
+function ajouterNote() {
+
+    var inputNote = document.createElement('input');
+    inputNote.type = "text";
+    inputNote.name = "note"+conteurNote;
+    conteurNote++;
+
+    document.getElementById("form_bloc_note").appendChild(inputNote)
+    
+}
+
+
+</script>

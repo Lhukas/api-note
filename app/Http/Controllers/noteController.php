@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\bloc_note;
-use App\Models\note;
-use Illuminate\Support\Facades\DB;
 
-
-class bloc_noteController extends Controller
+class noteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +13,7 @@ class bloc_noteController extends Controller
      */
     public function index()
     {
-        $listBlocNote = bloc_note::all()->toArray();
-        return view('home', ['listBlocNote' => $listBlocNote ] );
-
+        //
     }
 
     /**
@@ -29,7 +23,7 @@ class bloc_noteController extends Controller
      */
     public function create()
     {
-        return view('createBlocNote');
+        //
     }
 
     /**
@@ -40,46 +34,7 @@ class bloc_noteController extends Controller
      */
     public function store(Request $request)
     {
-/*
-        $array = $request->all();
-        dd(gettype($array));
-*/
-    
-    $request->validate([
-        'nameBlocNote'=>'required'
-    ]);
-
-
-    $test = new bloc_note([
-        'name_bloc_note' => $request->get('nameBlocNote'),
-    ]);
-    $test->save();
-
-    $id_bloc_note = $test->id;
-
-    $CountData = 0;
-
-  foreach ($request->all() as $data) {
-
-    if($CountData>1){
-        $test = new note([
-            'id_bloc_note' => $id_bloc_note,
-            'texte_note' => $data,
-        ]);
-        $test->save();
-
-    }
-    $CountData++;
-  }
-
-
-
-    
-
-
-
-    return redirect('/')->with('success', 'Nouvelle liste crée avec succès');
-    
+        //
     }
 
     /**
@@ -90,16 +45,7 @@ class bloc_noteController extends Controller
      */
     public function show($id)
     {
-        $bloc_note = bloc_note::find($id)->toArray();
-
-        $note = note::where('id_bloc_note','=', $id)->get()->toArray();
-
-        return view('notes', 
-        [ 
-            'blocNote' => $bloc_note,
-            'note' => $note,
-        ]);
-        
+        //
     }
 
     /**
@@ -133,10 +79,6 @@ class bloc_noteController extends Controller
      */
     public function destroy($id)
     {
-        $bloc_note = bloc_note::find($id);
-        $bloc_note->delete();
-
-        return redirect('/')->with('success', 'Liste supprimée avec succes');
+        //
     }
 }
-

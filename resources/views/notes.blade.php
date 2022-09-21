@@ -10,6 +10,19 @@
 <body>
 
     <h1>{{$blocNote['name_bloc_note']}}</h1>
+    <table>
+  <tr>
+    <th>Nom du bloc note</th>
+    <th></th>
+    <th></th>
+  </tr>
+   @foreach($note as $noteDetails)
+   <tr>
+    <td> <a  class="href">{{$noteDetails['texte_note']}}</a></td>
+    <td>   <a href="" class="btnDelete">Faite</a></td>
+  </tr>
+    @endforeach
+    </table>
 
    
 </body>

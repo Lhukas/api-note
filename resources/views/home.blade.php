@@ -34,12 +34,11 @@
    @foreach($listBlocNote as $blocNote)
    <tr>
     <td> <a href="show/{{$blocNote['id']}}" class="href">{{$blocNote['name_bloc_note']}}</a></td>
-    <td>   <a href="" class="btnDelete">Supprimer</a></td>
+    <td>   <a href="remove/{{$blocNote['id']}}" class="btnDelete">Supprimer</a></td>
     <td>  <a href="" class="btnEdit">Editer</a></td>
   </tr>
     @endforeach
     </table>
-</ul>
 </div>
 </body>
 </html>
