@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 html{
     color: white;
+    font-family: 'Poppins', sans-serif;
 }
 body{
     margin: 0px;
@@ -8,8 +11,158 @@ body{
     background-color: #024174;
     color: black;
     padding : 30px  !important;
+    margin-bottom: 50px;
+    text-align: center;
+    
+    font-weight: 700;
 }
+h1{
+    text-align: center;
+    color : white;
+}
+
+
 .header h1{
     color: white;
     margin-top: 0px;
 }
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+  th{
+  
+  
+    color: black;
+  }
+  
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+  .btnHeader{
+  text-align: center;
+    color: white !important;
+    background-color: #FFB752;
+    padding: 12px;
+    border-radius: 10px;
+  
+  
+  }
+  
+  
+  a{
+      text-decoration: none;
+      text-align: left;
+      color: black;
+      
+  }
+  a:visited {
+      color: black;
+      
+    }
+  
+    .container{
+      width: 50%;
+      margin: auto;
+    }
+  
+    .container h1{
+      color: black;
+    }
+  
+  
+    .container p{
+      color: black;
+      text-align: left;
+    }
+    .containerBtn{
+      display: grid;
+      grid-template-columns: 45% 45%;
+      text-align: center;
+      gap: 10%;
+      
+    }
+    .containerBtn a{
+  
+  text-align: center;
+  
+    }
+    .btnDelete{
+  
+      color: red !important;
+    
+      
+    }
+  
+  .alert{
+  
+    background-color: green;
+    padding: 10px;
+    border-radius: 8px;
+  
+  }
+  
+  .alert p {
+    color: white;
+  }
+
+  .btnAddNote{
+    float: left;
+    padding:10px;
+    background-color: #FFB752;
+    border-radius: 10px;
+  }
+  .btnSaveNote{
+    float: right;
+    padding:10px;
+    border-radius: 10px;
+    background-color: rgb(74, 237, 74);
+  }
+
+  h2{
+
+    color: black;
+  }
+
+
+  #texte_note{
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+
+  #submit_note{
+
+    height: 37px;
+    float: right;
+    width: 20%;
+    background-color: #FFB752;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor:pointer;
+  }
+
+  label{
+    color: black;
+  }
+
+  #form_bloc_note input{
+    
+display: block;
+margin: 20px auto;
+width: 40%;
+  }

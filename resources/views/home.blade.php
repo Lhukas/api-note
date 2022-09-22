@@ -11,12 +11,12 @@
 <body>
     <div class = "header">
     <h1>Mon bloc-notes en laravel</h1>
-    <span>Je me suis inspiré de l'application note d'Apple</span>
 
-    <span>pour te fournir le travail plus rapidement, je n'ai pas énormément travaillé la partie front <br> J'ai plus travaillé la partie back, 
-    en plus c'est sur cette partie que l'ont vas intervenir
-    </span>
+    <a href="create" class="btnHeader">Ajouter une liste</a>
+
+
 </div>
+
 
 <div class="container">
     @if($message = Session::get('success'))
@@ -24,18 +24,21 @@
         <p>{{$message}}</p>
     </div>
     @endif
-<a href="create">Ajouter une liste</a>
+
+
+    <h1>Mes listes</h1>
+
 <table>
   <tr>
     <th>Nom du bloc note</th>
-    <th></th>
-    <th></th>
+    <th>Supprimer</th>
+    <th>Editer</th>
   </tr>
    @foreach($listBlocNote as $blocNote)
    <tr>
     <td> <a href="show/{{$blocNote['id']}}" class="href">{{$blocNote['name_bloc_note']}}</a></td>
-    <td>   <a href="remove/{{$blocNote['id']}}" class="btnDelete">Supprimer</a></td>
-    <td>  <a href="" class="btnEdit">Editer</a></td>
+    <td>   <a href="remove/bloc_note/{{$blocNote['id']}}" class="btnDelete">Supprimer</a></td>
+    <td>  <a href="show/{{$blocNote['id']}}" class="btnEdit">Editer</a></td>
   </tr>
     @endforeach
     </table>

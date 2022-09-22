@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\note;
+use Illuminate\Support\Facades\DB;
 
 class noteController extends Controller
 {
@@ -32,9 +34,18 @@ class noteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+
+        $test = new note([
+            'id_bloc_note' => $id,
+            'texte_note' => $request->get('texte_note'),
+        ]);
+        $test->save();
+
+
+
+        return redirect('show/'.$id)->with('success', 'note ajouté avec succes');
     }
 
     /**
@@ -79,6 +90,11 @@ class noteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = note::find($id);
+        $bloc_note_id = $note->id_bloc_note;
+        $note->delete();
+
+        return redirect('show/'.$bloc_note_id)->with('success', 'note supprimée avec succes');
+
     }
 }

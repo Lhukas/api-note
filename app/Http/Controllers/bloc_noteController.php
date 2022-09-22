@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\bloc_note;
 use App\Models\note;
 use Illuminate\Support\Facades\DB;
+use PDF;
+use App\Mail\TestEmail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class bloc_noteController extends Controller
@@ -136,7 +140,78 @@ class bloc_noteController extends Controller
         $bloc_note = bloc_note::find($id);
         $bloc_note->delete();
 
+        $note = note::where('id_bloc_note','=', $id)->get();
+
+        foreach($note as $note2){
+            $note2->delete();
+        }
+
         return redirect('/')->with('success', 'Liste supprimée avec succes');
+    }
+
+
+    public function pdf($id)
+    {
+
+
+        $bloc_note = bloc_note::find($id)->toArray();
+
+        $note = note::where('id_bloc_note','=', $id)->get()->toArray();
+
+
+        $data = [
+            'bloc_note' => $bloc_note,
+            'note' => $note
+        ];
+          
+
+
+
+        $pdf = PDF::loadView('bloc_note_pdf', $data);
+
+        return $pdf->download($bloc_note['name_bloc_note'].'.pdf');
+
+    }
+
+    public function sendEmail(Request $request, $id)
+    {
+
+        $bloc_note = bloc_note::find($id)->toArray();
+
+        $note = note::where('id_bloc_note','=', $id)->get()->toArray();
+
+
+        $data = [
+            'bloc_note' => $bloc_note,
+            'note' => $note
+        ];
+          
+        $emailToSend = $request->get('mailToSend');
+
+
+        $pdf = PDF::loadView('bloc_note_pdf', $data);
+
+
+
+        $mailData = [
+            "title" => "Reussite",
+            "name" => "lhukasboss",
+            "dob" => "12/12/1990",
+        ];
+    
+        Mail::send('test', $mailData, function($message)use($data, $pdf) {
+            $message->to('lhukassauvage@gmail.com')
+                    ->subject("Liste par mail")
+                    ->attachData($pdf->output(), "text.pdf");
+        });
+
+
+
+
+       return redirect('/')->with('success', 'mail envoyé avec succes');
+    
+
+
     }
 }
 
