@@ -56,6 +56,7 @@ class bloc_noteController extends Controller
 
     $test = new bloc_note([
         'name_bloc_note' => $request->get('nameBlocNote'),
+        'modification_bloc_note' => isset($_POST['modif']) ? "false" : "true",
     ]);
     $test->save();
 
@@ -63,7 +64,7 @@ class bloc_noteController extends Controller
 
     $CountData = 0;
 
-  foreach ($request->all() as $data) {
+    foreach ($request->all() as $data) {
 
     if($CountData>1){
         $test = new note([
@@ -199,10 +200,10 @@ class bloc_noteController extends Controller
             "dob" => "12/12/1990",
         ];
     
-        Mail::send('test', $mailData, function($message)use($data, $pdf) {
-            $message->to('lhukassauvage@gmail.com')
+        Mail::send('test', $mailData, function($message)use($bloc_note, $pdf, $request) {
+            $message->to($request->get('mailToSend'))
                     ->subject("Liste par mail")
-                    ->attachData($pdf->output(), "text.pdf");
+                    ->attachData($pdf->output(), $bloc_note['name_bloc_note'].".pdf");
         });
 
 

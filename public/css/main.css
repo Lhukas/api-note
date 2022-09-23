@@ -3,6 +3,7 @@
 html{
     color: white;
     font-family: 'Poppins', sans-serif;
+    font-weight: 700;
 }
 body{
     margin: 0px;
@@ -85,7 +86,7 @@ table {
   
     .container p{
       color: black;
-      text-align: left;
+      
     }
     .containerBtn{
       display: grid;
@@ -165,4 +166,9 @@ table {
 display: block;
 margin: 20px auto;
 width: 40%;
+  }
+
+  input[type=checkbox]{
+
+    width: 50px !important;
   }

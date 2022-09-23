@@ -1,0 +1,12 @@
+html{
+    text-align: center;
+}
+
+.nameBlocNote, .nameNote{
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+
+}
