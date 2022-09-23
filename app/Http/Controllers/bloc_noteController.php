@@ -78,7 +78,7 @@ class bloc_noteController extends Controller
      */
     public function show($id)
     {
-        $bloc_note = bloc_note::findOrFailOrFail($id)->toArray();
+        $bloc_note = bloc_note::findOrFail($id)->toArray();
 
         $note = note::where('id_bloc_note','=', $id)->get()->toArray();
 
