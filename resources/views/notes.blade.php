@@ -40,7 +40,7 @@
     <h2>Ajouter une note</h2>
     <form action="/save/note/{{$blocNote['id']}}" method="POST" id="form_note">
     @csrf
-    <input type="text" name="texte_note" id="texte_note">
+    <input type="text" name="texte_note" id="texte_note" required>
     <input type="text" name="id" value="{{$blocNote['id']}}" style="display:none;">
     <input type="submit" value="Valider" id="submit_note">
 </form>
@@ -52,7 +52,7 @@
 
 <form action="/send-email/{{$blocNote['id']}}" method="POST" id="form_note">
     @csrf
-    <input type="text" name="mailToSend" id="texte_note" placeholder="Adresse mail">
+    <input type="text" name="mailToSend" id="texte_note" placeholder="Adresse mail" required>
   
 
     <input type="submit" value="Envoyé" id="submit_note">

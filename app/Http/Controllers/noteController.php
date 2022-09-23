@@ -90,7 +90,7 @@ class noteController extends Controller
      */
     public function destroy($id)
     {
-        $note = note::find($id);
+        $note = note::findOrFail($id);
         $bloc_note_id = $note->id_bloc_note;
         $note->delete();
 

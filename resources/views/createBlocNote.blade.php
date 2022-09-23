@@ -26,10 +26,10 @@
     @csrf
     <label>Nom du bloc note </label>
     <br>
-    <input type="text" name="nameBlocNote" id="" class="nameBlocNote">
+    <input type="text" name="nameBlocNote" id="" class="nameBlocNote" required>
 
     <p>Note : </p>
-    <input type="text" name="note1" id="" class="nameNote">
+    <input type="text" name="note1" id="" class="nameNote" required>
     <input type="button" value="Ajouter une note" onclick="ajouterNote()" class="btnHeader">
     <input type="submit" value="Valider" class="btnHeader">
 
@@ -57,7 +57,8 @@ function ajouterNote() {
     var inputNote = document.createElement('input');
     inputNote.type = "text";
     inputNote.name = "note"+conteurNote;
-   
+    inputNote.classList.add("nameNote");
+   inputNote.setAttribute('required', '');
 
     document.getElementsByName("note"+(conteurNote-1))[0].after(inputNote)
 
