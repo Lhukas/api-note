@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\bloc_note;
+use App\Models\BlocNote;
 
 
 class isModifiable
@@ -18,7 +18,7 @@ class isModifiable
      */
     public function handle(Request $request, Closure $next)
     {
-        $bloc_note = bloc_note::find($request->get('id'))->toArray();
+        $bloc_note = BlocNote::find($request->get('id'))->toArray();
 
 if ($bloc_note['modification_bloc_note'] == "false") {
    

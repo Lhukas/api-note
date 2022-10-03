@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\bloc_note;
-use App\Models\note;
+use App\Models\BlocNote;
+use App\Models\Note;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use App\Mail\TestEmail;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 
 
-class bloc_noteController extends Controller
+class BlocNoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class bloc_noteController extends Controller
      */
     public function index()
     {
-        $listBlocNote = bloc_note::all()->toArray();
+        $listBlocNote = BlocNote::all()->toArray();
         return view('home', ['listBlocNote' => $listBlocNote ] );
 
     }
@@ -45,7 +45,7 @@ class bloc_noteController extends Controller
     public function store(Request $request)
     {
 
-    $bloc_note = new bloc_note([
+    $bloc_note = new BlocNote([
         'name_bloc_note' => $request->get('nameBlocNote'),
         'modification_bloc_note' => isset($_POST['modif']) ? "false" : "true",
     ]);
@@ -78,7 +78,7 @@ class bloc_noteController extends Controller
      */
     public function show($id)
     {
-        $bloc_note = bloc_note::findOrFail($id)->toArray();
+        $bloc_note = BlocNote::findOrFail($id)->toArray();
 
         $note = note::where('id_bloc_note','=', $id)->get()->toArray();
 
@@ -121,18 +121,23 @@ class bloc_noteController extends Controller
      */
     public function destroy($id)
     {
-        $note = note::where('id_bloc_note','=', $id)->get();
+
+        $note = Note::where('id_bloc_note','=', $id)->get();
+
 
         foreach($note as $note2){
             $note2->delete();
         }
 
-        $bloc_note = bloc_note::findOrFail($id);
+
+        $bloc_note = BlocNote::find($id);
+
         $bloc_note->delete();
 
         
 
-        return redirect('/')->with('success', 'Liste supprimée avec succes');
+    return redirect('/')->with('success', 'Liste supprimée avec succes');
+
     }
 
 
@@ -140,7 +145,7 @@ class bloc_noteController extends Controller
     {
 
 
-        $bloc_note = bloc_note::findOrFail($id)->toArray();
+        $bloc_note = BlocNote::findOrFail($id)->toArray();
 
         $note = note::where('id_bloc_note','=', $id)->get()->toArray();
 
@@ -153,7 +158,7 @@ class bloc_noteController extends Controller
 
 
 
-        $pdf = PDF::loadView('bloc_note_pdf', $data);
+        $pdf = PDF::loadView('pdf/BlocNotePdf', $data);
 
         return $pdf->download($bloc_note['name_bloc_note'].'.pdf');
 
@@ -162,7 +167,7 @@ class bloc_noteController extends Controller
     public function sendEmail(Request $request, $id)
     {
 
-        $bloc_note = bloc_note::findOrFail($id)->toArray();
+        $bloc_note = BlocNote::findOrFail($id)->toArray();
 
         $note = note::where('id_bloc_note','=', $id)->get()->toArray();
 

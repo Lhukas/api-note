@@ -1,12 +1,18 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+
+
+
+class BlocNote extends Model
 {
-    protected $fillable = ['nameBlocNote'];
-    use HasFactory;
+    protected $fillable = [
+        'name_bloc_note',
+        'modification_bloc_note'
+    ];
 }
